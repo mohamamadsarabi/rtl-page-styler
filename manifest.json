@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "راست‌چین",
+  "version": "1.0",
+  "description": "افزونه‌ای برای راست‌چین کردن صفحه و اعمال فونت فارسی",
+  "permissions": ["scripting", "activeTab", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "iconRightToLeft.png",
+      "48": "iconRightToLeft.png",
+      "128": "iconRightToLeft.png"
+    }
+  },
+  "icons": {
+    "16": "iconRightToLeft.png",
+    "48": "iconRightToLeft.png",
+    "128": "iconRightToLeft.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/YekanBakh-VF.ttf"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
